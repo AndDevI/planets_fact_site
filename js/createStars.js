@@ -18,7 +18,7 @@ function createStars () {
     document.getElementById('star-container').appendChild(star);
 
     setTimeout(function () {
-      star.style.opacity = 1;
+      star.style.opacity = 0.5;
     }, 10); 
 
     setTimeout(function () {
