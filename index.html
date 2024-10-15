@@ -10,23 +10,107 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="tailwind.config.js"></script>
 
+        <style type="text/tailwindcss">
+            @layer components {
+                .mobile_resposive {
+                    @apply flex flex-col gap-10;   
+                }
+                .tablet_grid {
+                    @apply grid grid-cols-2 grid-rows-3 gap-4;
+                }
+                .animate-in-back {
+                    @apply transition-all duration-500 ease-in-out transform scale-0 opacity-0;
+                }
+                .animate-in-back-active {
+                    @apply scale-100 opacity-100;
+                }
+            }
+        </style>
+
         <title>Frontend Mentor | Planets fact site</title>
     </head>
-    <body class="bg-gradient-to-b from-black via-veryDarkBlue to-indigo-950 h-screen w-screen overflow-hidden">
+    <body class="bg-gradient-to-b from-black via-veryDarkBlue to-indigo-950 h-screen overflow-hidden">
         <div id="star-container" class="fixed top-0 left-0 w-screen h-screen pointer-events-none z-[-1]"></div>
 
-        <header class="flex items-center justify-between px-6 py-4 border-b border-b-white/50">
+        <header class="flex items-center justify-between px-6 py-4 border-b border-b-white/30">
             <h1 class="text-white text-3xl font-antonio font-bold">
                 THE PLANETS
             </h1>
 
-            <img id="btn_menu" src="assets/icons/icon-hamburger.svg" alt="">
+            <img id="btn_menu" src="assets/icons/icon-hamburger.svg" alt="" class="cursor-pointer">
+
+            <nav id="menu_mobile" class="mt-32 px-10 translate-x-full ease-linear duration-300 absolute inset-0">
+                <ul id="ul_mobile" class="space-y-6">
+                </ul>
+            </nav>
         </header>
         
-        <nav id="menu_mobile" class="mt-12 px-10 translate-x-full ease-linear duration-300">
-            <ul id="ul_mobile" class="space-y-6">
-            </ul>
-        </nav>
+        <main class="mobile_resposive animate-in-back-active">
+            <section>
+                <nav class="border-b border-b-white/30">
+                    <ul class="flex gap-20 justify-center text-white/50 py-5 font-spartan text-sm">
+                        <li><button>
+                                OVERVIEW
+                            </button></li>
+                        <li><button>
+                                STRUCTURE
+                            </button></li>
+                        <li><button>
+                                SURFACE
+                            </button></li>
+                    </ul>
+                </nav>
+            </section>
+                
+            <section class="place-self-center">
+                <img 
+                    src="assets/images/planet-mercury.svg" 
+                    alt=""
+                    class="h-28 w-28"
+                >
+            </section>
+            
+            <section class="text-center space-y-6 px-6">
+                <h1 class="text-white text-4xl font-antonio font-medium">
+                    Mercury
+                </h1>
+
+                <p class="text-white font-spartan">
+                    Mercury is the smallest planet in the Solar System and the closest
+                    to the Sun. Its orbit around the Sun takes 87.97 Earth days, the
+                    shortest of all the Sun's planets. Mercury is one of four terrestrial
+                    planets in the Solar System, and is a rocky body like Earth.
+                </p>
+                
+                <p class="text-white/50 font-spartan">
+                    Source :
+                    <a href="https://en.wikipedia.org/wiki/Mercury_(planet)" class="inline-flex items-center font-bold underline">
+                        Wikipedia
+                        <img src="assets/icons/icon-source.svg" alt="" class="ml-2">
+                    </a>
+                </p>
+            </section>
+            
+            <section class="px-6 space-y-4">
+                <div class="flex items-center justify-between border border-white/30 px-6 py-4">
+                    <p class="text-white/40 text-sm font-spartan font-bold">Rotation Time</p>
+                    <p class="text-white text-xl font-antonio font-medium">58.6 Days</p>
+                </div>
+                <div class="flex items-center justify-between border border-white/30 px-6 py-4">
+                    <p class="text-white/40 text-sm font-spartan font-bold">Revolution Time</p>
+                    <p class="text-white text-xl font-antonio font-medium">87.97 Days</p>
+                </div>
+                <div class="flex items-center justify-between border border-white/30 px-6 py-4">
+                    <p class="text-white/40 text-sm font-spartan font-bold">Radius</p>
+                    <p class="text-white text-xl font-antonio font-medium">2,439.7 KM</p>
+                </div>
+                <div class="flex items-center justify-between border border-white/30 px-6 py-4">
+                    <p class="text-white/40 text-sm font-spartan font-bold">Average Temp.</p>
+                    <p class="text-white text-xl font-antonio font-medium">430°c</p>
+                </div>
+            </section>
+
+        </main>
 
         
 

@@ -71,11 +71,17 @@ const buttonMenu = document.querySelector('#btn_menu');
 buttonMenu.addEventListener('click', () => {
     const menu = document.querySelector('#menu_mobile');
     const ulMobile = document.querySelector('#ul_mobile'); 
+    const main = document.querySelector('main'); 
 
     if (!buttonMenu.classList.contains('active')) {
         buttonMenu.classList.add('active');
         menu.classList.replace('translate-x-full', 'translate-x-0');
         createPlanetsMenu();
+
+        main.classList.add('animate-in-back');
+        setTimeout(() => {
+            main.classList.remove('animate-in-back-active');
+        }, 10); 
     } else {
         buttonMenu.classList.remove('active');
 
@@ -99,6 +105,9 @@ buttonMenu.addEventListener('click', () => {
         setTimeout(() => {
             ulMobile.innerHTML = ''; 
             menu.classList.replace('translate-x-0', 'translate-x-full'); 
+
+            main.classList.add('animate-in-back-active');
         }, 100 * (lis.length + lines.length)); 
     }
 });
+
