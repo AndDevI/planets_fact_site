@@ -19,7 +19,7 @@
                     @apply grid grid-cols-2 grid-rows-3 auto-rows-auto;
                 }
                 .animate-in {
-                    @apply transition-transform duration-500 ease-in-out transform scale-0 opacity-0;
+                    @apply transition-all duration-500 ease-in-out transform scale-0 opacity-0;
                 }
                 .animate-in-active {
                     @apply scale-100 opacity-100;
@@ -32,6 +32,9 @@
                 }
                 .planet-value {
                     @apply text-white text-xl font-antonio font-medium md:text-2xl;
+                }
+                .button {
+                   @apply md:border md:border-white/30 md:h-12 md:w-full md:text-left md:pl-10;
                 }
             }
         </style>
@@ -57,9 +60,9 @@
             <section class="md:col-start-2 md:row-start-2 md:flex md:flex-col md:justify-center md:px-6">
                 <nav aria-label="Planet navigation" class="border-b border-b-white/30 md:border-0">
                     <ul class="flex justify-around text-white/50 py-5 font-spartan text-sm md:flex-col md:space-y-6 md:font-bold md:text-white md:justify-start">
-                        <li><button class="md:border md:border-white/30 md:h-12 md:w-full md:text-left md:pl-10">OVERVIEW</button></li>
-                        <li><button class="md:border md:border-white/30 md:h-12 md:w-full md:text-left md:pl-10">STRUCTURE</button></li>
-                        <li><button class="md:border md:border-white/30 md:h-12 md:w-full md:text-left md:pl-10">SURFACE</button></li>
+                        <li><button class="button md:hover:bg-gray-600">OVERVIEW</button></li>
+                        <li><button class="button md:hover:bg-gray-600">STRUCTURE</button></li>
+                        <li><button class="button md:hover:bg-gray-600">SURFACE</button></li>
                     </ul>
                 </nav>
             </section>
