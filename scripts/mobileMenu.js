@@ -78,9 +78,9 @@ buttonMenu.addEventListener('click', () => {
         menu.classList.replace('translate-x-full', 'translate-x-0');
         createPlanetsMenu();
 
-        main.classList.add('animate-in-back');
+        main.classList.add('animate-in');
         setTimeout(() => {
-            main.classList.remove('animate-in-back-active');
+            main.classList.remove('animate-in-active');
         }, 10); 
     } else {
         buttonMenu.classList.remove('active');
@@ -106,7 +106,7 @@ buttonMenu.addEventListener('click', () => {
             ulMobile.innerHTML = ''; 
             menu.classList.replace('translate-x-0', 'translate-x-full'); 
 
-            main.classList.add('animate-in-back-active');
+            main.classList.add('animate-in-active');
         }, 100 * (lis.length + lines.length)); 
     }
 });
