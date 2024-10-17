@@ -20,12 +20,12 @@ function createPlanetsMenu() {
                 line.classList.add('bg-white/10', 'h-px', 'opacity-0', 'transition-opacity', 'duration-500');
 
                 const li = document.createElement('li');
-                li.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                li.classList.add('opacity-0', 'transition-opacity', 'duration-500', 'justify-between');
 
-                const a = document.createElement('a');
-                a.href = '#';
-                a.classList.add('flex', 'items-center');
-                a.setAttribute('aria-label', `${data.name} page`);
+                const buttonPlanets = document.createElement('button');
+                buttonPlanets.value = data.name;
+                buttonPlanets.classList.add('flex', 'items-center', 'w-full');
+                buttonPlanets.setAttribute('aria-label', `${data.name} page`);
 
                 const innerDiv = document.createElement('div');
                 innerDiv.classList.add('flex', 'items-center', 'gap-6');
@@ -33,22 +33,22 @@ function createPlanetsMenu() {
                 const circleDiv = document.createElement('div');
                 circleDiv.classList.add('w-5', 'h-5', 'rounded-full', `bg-${planetsColors[index % planetsColors.length]}`);
 
-                const mercuryText = document.createElement('p');
-                mercuryText.textContent = data.name;
-                mercuryText.classList.add('text-white', 'text-lg', 'font-spartan', 'font-bold', 'tracking-wide', 'uppercase');
+                const planetsText = document.createElement('p');
+                planetsText.textContent = data.name;
+                planetsText.classList.add('text-white', 'text-lg', 'font-spartan', 'font-bold', 'tracking-wide', 'uppercase');
 
                 innerDiv.appendChild(circleDiv);
-                innerDiv.appendChild(mercuryText);
+                innerDiv.appendChild(planetsText);
 
                 const chevronIcon = document.createElement('img');
                 chevronIcon.src = 'assets/icons/icon-chevron.svg';
                 chevronIcon.alt = `Navigate to ${data.name}`;
                 chevronIcon.classList.add('ml-auto');
 
-                a.appendChild(innerDiv);
-                a.appendChild(chevronIcon);
+                buttonPlanets.appendChild(innerDiv);
+                buttonPlanets.appendChild(chevronIcon);
 
-                li.appendChild(a);
+                li.appendChild(buttonPlanets);
 
                 ulMobile.appendChild(li);
                 ulMobile.appendChild(line);
