@@ -68,42 +68,42 @@
         <nav id="menu_desktop" class="hidden lg:block">
             <ul id="ul_desktop" class="flex space-x-10" role="menu">
                 <li>
-                    <button type="button" class="button-planets" aria-label="Mercury page" value="Mercury">
+                    <button type="button" class="button-planets select" aria-label="Mercury page" value="Mercury">
                         Mercury
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Venus page" value="Venus">
+                    <button type="button" class="button-planets select" aria-label="Venus page" value="Venus">
                         Venus
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Earth page" value="Earth">
+                    <button type="button" class="button-planets select" aria-label="Earth page" value="Earth">
                         Earth
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Mars page" value="Mars">
+                    <button type="button" class="button-planets select" aria-label="Mars page" value="Mars">
                         Mars
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Jupiter page" value="Jupiter">
+                    <button type="button" class="button-planets select" aria-label="Jupiter page" value="Jupiter">
                         Jupiter
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Saturn page" value="Saturn">
+                    <button type="button" class="button-planets select" aria-label="Saturn page" value="Saturn">
                         Saturn
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Uranus page" value="Uranus">
+                    <button type="button" class="button-planets select" aria-label="Uranus page" value="Uranus">
                         Uranus
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="button-planets" aria-label="Neptune page" value="Neptune">
+                    <button type="button" class="button-planets select" aria-label="Neptune page" value="Neptune">
                         Neptune
                     </button>
                 </li>
@@ -115,30 +115,26 @@
     <main class="flex md:mt-20 lg:mt-32 items-center justify-center w-auto">
         <section class="mobile-responsive md:tablet-grid lg:desktop animate-in-active w-full">
             <!-- Planet Navigation -->
-            <section
-                class="md:col-start-2 md:row-start-2 md:flex md:flex-col md:justify-center md:px-6 lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-3 lg:max-w-96 lg:ml-40">
+            <section class="md:col-start-2 md:row-start-2 md:flex md:flex-col md:justify-center md:px-6 lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-3 lg:max-w-96 lg:ml-40">
                 <nav aria-label="Planet navigation" class="border-b border-b-white/30 md:border-0">
-                    <ul
-                        class="flex justify-around text-white/50 py-5 font-spartan text-sm md:flex-col md:space-y-6 md:font-bold md:text-white md:justify-start">
-                        <li><button class="button-information md:hover:bg-gray-600">OVERVIEW</button></li>
-                        <li><button class="button-information md:hover:bg-gray-600">STRUCTURE</button></li>
-                        <li><button class="button-information md:hover:bg-gray-600">SURFACE</button></li>
+                    <ul class="flex justify-around text-white/50 py-5 font-spartan text-sm md:flex-col md:space-y-6 md:font-bold md:text-white md:justify-start">
+                        <li><button id="activeFirst" class="button-information md:hover:bg-white/30">OVERVIEW</button></li>
+                        <li><button class="button-information md:hover:bg-white/30">STRUCTURE</button></li>
+                        <li><button class="button-information md:hover:bg-white/30">SURFACE</button></li>
                     </ul>
                 </nav>
             </section>
 
             <!-- Planet Image -->
-            <section
-                class="place-self-center md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1 lg:ml-40">
-                <img src="assets/images/planet-mercury.svg" alt="Illustration of planet Mercury"
+            <section class="place-self-center md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1 lg:ml-40">
+                <img id="image" src="assets/images/planet-mercury.svg" alt="Illustration of planet Mercury"
                     class="h-auto w-28 md:w-48 lg:w-72">
             </section>
 
             <!-- Planet Information -->
-            <section
-                class="text-center space-y-6 px-6 md:col-start-1 md:row-start-2 md:text-left lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-1 lg:max-w-96 lg:ml-40">
-                <h1 class="text-white text-4xl font-antonio font-medium md:text-5xl uppercase">Mercury</h1>
-                <p class="text-white font-spartan">
+            <section class="text-center space-y-6 px-6 md:col-start-1 md:row-start-2 md:text-left lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-1 lg:max-w-96 lg:ml-40">
+                <h1 id="name" class="text-white text-4xl font-antonio font-medium md:text-5xl uppercase">Mercury</h1>
+                <p id="content" class="text-white font-spartan">
                     Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the
                     Sun takes
                     87.97 Earth days, the shortest of all the Sun's planets. Mercury is one of four terrestrial planets
@@ -147,7 +143,7 @@
                 </p>
                 <p class="text-white/50 font-spartan">
                     Source:
-                    <a href="https://en.wikipedia.org/wiki/Mercury_(planet)"
+                    <a id="source" href="https://en.wikipedia.org/wiki/Mercury_(planet)"
                         class="inline-flex items-center font-bold underline">
                         Wikipedia
                         <img src="assets/icons/icon-source.svg" alt="External source icon" class="ml-2">
@@ -156,23 +152,22 @@
             </section>
 
             <!-- Planet Stats -->
-            <section
-                class="px-6 space-y-4 md:col-span-2 md:flex md:space-x-4 md:space-y-0 md:place-self-center lg:col-span-4 lg:row-start-5 lg:justify-around lg:w-full lg:mt-10">
+            <section class="px-6 space-y-4 md:col-span-2 md:flex md:space-x-4 md:space-y-0 md:place-self-center lg:col-span-4 lg:row-start-5 lg:justify-around lg:w-full lg:mt-10">
                 <div class="planet-card">
                     <p class="planet-info">ROTATION TIME</p>
-                    <p class="planet-value">58.6 Days</p>
+                    <p id="rotation" class="planet-value">58.6 Days</p>
                 </div>
                 <div class="planet-card">
                     <p class="planet-info">REVOLUTION TIME</p>
-                    <p class="planet-value">87.97 Days</p>
+                    <p id="revolution" class="planet-value">87.97 Days</p>
                 </div>
                 <div class="planet-card">
                     <p class="planet-info">RADIUS</p>
-                    <p class="planet-value">2,439.7 KM</p>
+                    <p id="radius" class="planet-value">2,439.7 KM</p>
                 </div>
                 <div class="planet-card">
                     <p class="planet-info">AVERAGE TEMP.</p>
-                    <p class="planet-value">430°C</p>
+                    <p id="temperature" class="planet-value">430°C</p>
                 </div>
             </section>
         </section>
@@ -181,6 +176,7 @@
     <!-- Scripts -->
     <script src="scripts/menuAnimation.js"></script>
     <script src="scripts/createStars.js"></script>
+    <script src="scripts/colorPlanets.js"></script>
     
 </body>
 

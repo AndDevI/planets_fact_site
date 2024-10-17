@@ -10,14 +10,14 @@ tailwind.config = {
                 'verySoftBlue':'#B1D5E2',
                 'lightGrayishBlue.':'#DEF4FC',
 
-                'mercuryColor': '#DEF4FC',
-                'venusColor': '#F7CC7F',
-                'earthColor': '#545BFE',
-                'marsColor': '#FF6A45',
-                'jupiterColor': '#ECAD7A',
-                'saturnColor': '#FCCB6B',
-                'uranusColor': '#65F0D5',
-                'neptuneColor': '#497EFA'
+                'MercuryColor': '#DEF4FC',
+                'VenusColor': '#F7CC7F',
+                'EarthColor': '#545BFE',
+                'MarsColor': '#FF6A45',
+                'JupiterColor': '#ECAD7A',
+                'SaturnColor': '#FCCB6B',
+                'UranusColor': '#65F0D5',
+                'NeptuneColor': '#497EFA'
             }, 
         }
     }

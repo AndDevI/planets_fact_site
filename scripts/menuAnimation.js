@@ -3,14 +3,14 @@ function createPlanetsMenu() {
         .then(response => response.json())
         .then(datas => {
             const planetsColors = [
-                'mercuryColor',
-                'venusColor',
-                'earthColor',
-                'marsColor',
-                'jupiterColor',
-                'saturnColor',
-                'uranusColor',
-                'neptuneColor',
+                'MercuryColor',
+                'VenusColor',
+                'EarthColor',
+                'MarsColor',
+                'JupiterColor',
+                'SaturnColor',
+                'UranusColor',
+                'NeptuneColor',
             ];
 
             const ulMobile = document.querySelector('#ul_mobile');
@@ -24,7 +24,7 @@ function createPlanetsMenu() {
 
                 const buttonPlanets = document.createElement('button');
                 buttonPlanets.value = data.name;
-                buttonPlanets.classList.add('flex', 'items-center', 'w-full');
+                buttonPlanets.classList.add('flex', 'items-center', 'w-full', 'select');
                 buttonPlanets.setAttribute('aria-label', `${data.name} page`);
 
                 const innerDiv = document.createElement('div');
@@ -54,15 +54,19 @@ function createPlanetsMenu() {
                 ulMobile.appendChild(line);
 
                 setTimeout(() => {
-                    li.classList.remove('opacity-0'); 
-                    li.classList.add('opacity-100'); 
+                    li.classList.remove('opacity-0');
+                    li.classList.add('opacity-100');
 
-                    line.classList.remove('opacity-0'); 
-                    line.classList.add('opacity-100'); 
-                }, 100 * index); 
+                    line.classList.remove('opacity-0');
+                    line.classList.add('opacity-100');
+                }, 100 * index);
             });
+
+            // Chama a função de outro arquivo para atualizar a variável selectedPlanet
+            updateSelectedPlanet();
         });
 }
+
 
 const buttonMenu = document.querySelector('#btn_menu');
 
@@ -113,13 +117,14 @@ buttonMenu.addEventListener('click', () => {
 
 function animatePlanetButtons() {
     const buttons = document.querySelectorAll('#ul_desktop .button-planets');
-
+    
     buttons.forEach((button, index) => {
         setTimeout(() => {
             button.classList.remove('opacity-0'); 
             button.classList.add('opacity-100');   
         }, index * 300);
     });
+    
 }
 
 function updateDesktopMenu() {
@@ -129,6 +134,7 @@ function updateDesktopMenu() {
     if (window.innerWidth >= 1024) { 
         menu.classList.remove('hidden'); 
         animatePlanetButtons(); 
+        
     } else {
         menu.classList.add('hidden'); 
         buttons.forEach(button => {
