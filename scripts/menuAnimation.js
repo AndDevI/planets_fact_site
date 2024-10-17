@@ -64,8 +64,6 @@ function createPlanetsMenu() {
         });
 }
 
-
-
 const buttonMenu = document.querySelector('#btn_menu');
 
 buttonMenu.addEventListener('click', () => {
@@ -110,4 +108,37 @@ buttonMenu.addEventListener('click', () => {
         }, 100 * (lis.length + lines.length)); 
     }
 });
+
+
+
+function animatePlanetButtons() {
+    const buttons = document.querySelectorAll('#ul_desktop .button-planets');
+
+    buttons.forEach((button, index) => {
+        setTimeout(() => {
+            button.classList.remove('opacity-0'); 
+            button.classList.add('opacity-100');   
+        }, index * 300);
+    });
+}
+
+function updateDesktopMenu() {
+    const menu = document.getElementById('menu_desktop');
+    const buttons = document.querySelectorAll('#ul_desktop .button-planets');
+
+    if (window.innerWidth >= 1024) { 
+        menu.classList.remove('hidden'); 
+        animatePlanetButtons(); 
+    } else {
+        menu.classList.add('hidden'); 
+        buttons.forEach(button => {
+            button.classList.remove('opacity-100'); 
+            button.classList.add('opacity-0'); 
+        });
+    }
+}
+
+updateDesktopMenu();
+
+window.addEventListener('resize', updateDesktopMenu);
 

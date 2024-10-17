@@ -7,9 +7,7 @@
     <title>Frontend Mentor | Planets Fact Site</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=League+Spartan:wght@100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
@@ -40,8 +38,11 @@
                 .planet-value {
                     @apply text-white text-xl font-antonio font-medium md:text-2xl lg:text-4xl;
                 }
-                .button {
+                .button-information {
                     @apply md:border md:border-white/30 md:h-12 md:w-full md:text-left md:pl-10;
+                }
+                .button-planets {
+                    @apply text-white text-sm font-bold font-spartan uppercase opacity-0 transition-opacity duration-300;
                 }
             }
         </style>
@@ -56,12 +57,73 @@
     <header class="flex items-center justify-between px-6 py-4 border-b border-b-white/30">
         <h1 class="text-white text-3xl font-antonio font-bold">THE PLANETS</h1>
 
-        <button id="btn_menu" aria-label="Toggle menu" class="cursor-pointer">
+        <button id="btn_menu" aria-label="Toggle menu" class="cursor-pointer lg:hidden">
             <img src="assets/icons/icon-hamburger.svg" alt="Open menu">
         </button>
 
-        <nav id="menu_mobile" class="mt-32 px-10 translate-x-full ease-linear duration-300 absolute inset-0">
+        <nav id="menu_mobile" class="mt-32 px-10 translate-x-full ease-linear duration-300 absolute inset-0 lg:hidden">
             <ul id="ul_mobile" class="space-y-6" role="menu"></ul>
+        </nav>
+
+        <nav id="menu_desktop" class="hidden lg:block">
+            <ul id="ul_desktop" class="flex space-x-10" role="menu">
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Mercury page">
+                        Mercury
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Venus page">
+                        Venus
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Earth page">
+                        Earth
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Mars page">
+                        Mars
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Jupiter page">
+                        Jupiter
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Saturn page">
+                        Saturn
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Uranus page">
+                        Uranus
+                    </button>
+                </li>
+                <li>
+                    <button type="button"
+                        class="button-planets"
+                        aria-label="Neptune page">
+                        Neptune
+                    </button>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -74,9 +136,9 @@
                 <nav aria-label="Planet navigation" class="border-b border-b-white/30 md:border-0">
                     <ul
                         class="flex justify-around text-white/50 py-5 font-spartan text-sm md:flex-col md:space-y-6 md:font-bold md:text-white md:justify-start">
-                        <li><button class="button md:hover:bg-gray-600">OVERVIEW</button></li>
-                        <li><button class="button md:hover:bg-gray-600">STRUCTURE</button></li>
-                        <li><button class="button md:hover:bg-gray-600">SURFACE</button></li>
+                        <li><button class="button-information md:hover:bg-gray-600">OVERVIEW</button></li>
+                        <li><button class="button-information md:hover:bg-gray-600">STRUCTURE</button></li>
+                        <li><button class="button-information md:hover:bg-gray-600">SURFACE</button></li>
                     </ul>
                 </nav>
             </section>
@@ -133,8 +195,9 @@
     </main>
 
     <!-- Scripts -->
+    <script src="scripts/menuAnimation.js"></script>
     <script src="scripts/createStars.js"></script>
-    <script src="scripts/mobileMenu.js"></script>
+    
 </body>
 
 </html>
