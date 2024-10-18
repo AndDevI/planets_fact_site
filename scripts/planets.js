@@ -46,7 +46,7 @@ function updateSelectedPlanet() {
                         }
                 });
 
-                fetch('../assets/data/data.json')
+                fetch('/assets/data/data.json')
                     .then(response => response.json())
                     .then(planetsData => {
                         const planetData = planetsData.find(p => p.name === selectedPlanet);
