@@ -17,6 +17,8 @@ function updateSelectedPlanet() {
                     btn.classList.add(`bg-${colorPlanet}/50`); 
                 }
             });
+
+            fetchAndUpdatePlanetInfo();
         });
     });
 }
