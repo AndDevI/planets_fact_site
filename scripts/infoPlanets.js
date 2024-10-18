@@ -1,25 +1,27 @@
 const buttonInformation = document.querySelectorAll('.button-information');
 let buttonValueInfo = null; 
 
-window.onload = () => {
-    buttonInformation.forEach(btn => {
-        if (btn.id === 'activeFirst') {
-            btn.classList.add(`bg-${colorPlanet}/50`); 
-        }
-    });
-};
-
 buttonInformation.forEach(button => {
     button.addEventListener('click', () => {
-        const dynamicClass = `bg-${colorPlanet}/50`;
+        let dynamicClass = null;
 
         buttonInformation.forEach(btn => {
-            btn.classList.remove('active');
-            btn.classList.remove(dynamicClass); 
+            if (window.innerWidth > 768) {
+                dynamicClass = `md:bg-${colorPlanet}/50`;
+                btn.classList.remove('active');
+                btn.classList.remove(dynamicClass); 
+            } else if (window.innerWidth < 768){
+                dynamicClass = `text-${colorPlanet}`;
+                btn.classList.remove('active');
+                btn.classList.remove(dynamicClass); 
+            }
+
         });
 
-        button.classList.add('active');
-        button.classList.add(dynamicClass);
+        if (dynamicClass) {
+            button.classList.add('active');
+            button.classList.add(dynamicClass);
+        }
 
         buttonValueInfo = button.value; 
 

@@ -4,16 +4,30 @@ let colorPlanet = "MercuryColor";
 function updateSelectedPlanet() {
     const planets = document.querySelectorAll('.select');
 
+    const initialPlanetButton = Array.from(planets).find(p => p.value === selectedPlanet);
+    if (initialPlanetButton) {
+        initialPlanetButton.classList.remove('text-white');
+        initialPlanetButton.classList.add(`text-${colorPlanet}`); 
+    }
+
     planets.forEach(planet => {
         planet.addEventListener('click', (event) => {
             const clickedPlanet = event.currentTarget.value;
 
             if (clickedPlanet === selectedPlanet) {
-                return;
+                return; 
             }
 
             colorPlanet = `${clickedPlanet}Color`;
             selectedPlanet = clickedPlanet;
+
+            planets.forEach(p => {
+                p.classList.remove(`text-${p.value}Color`); 
+                p.classList.add('text-white'); 
+            });
+
+            planet.classList.remove('text-white');
+            planet.classList.add(`text-${colorPlanet}`);
 
             const mainElement = document.querySelector('main');
             mainElement.classList.add('animate-in'); 
@@ -23,29 +37,32 @@ function updateSelectedPlanet() {
                     btn.className = ''; 
                     btn.classList.add('button-information', 'md:hover:bg-white/30');
 
-                    if (btn.id === 'activeFirst') {
-                        btn.classList.add(`bg-${colorPlanet}/50`); 
-                    }
+                        if (btn.id === 'activeFirst') {
+                            if (window.innerWidth > 768) {
+                                btn.classList.add(`md:bg-${colorPlanet}/50`); 
+                            } else if (window.innerWidth < 768) {
+                                btn.classList.add(`text-${colorPlanet}`); 
+                            }
+                        }
                 });
 
-                
                 fetch('../assets/data/data.json')
                     .then(response => response.json())
                     .then(planetsData => {
-                        const planet = planetsData.find(p => p.name === selectedPlanet);
+                        const planetData = planetsData.find(p => p.name === selectedPlanet);
 
-                        if (planet) {
+                        if (planetData) {
                             document.getElementById("image-geo").classList.add('hidden');
-                            document.getElementById("name").textContent = planet.name;
-                            document.getElementById("image").src = planet.images.planet;
-                            document.getElementById("content").textContent = planet.overview.content;
+                            document.getElementById("name").textContent = planetData.name;
+                            document.getElementById("image").src = planetData.images.planet;
+                            document.getElementById("content").textContent = planetData.overview.content;
                             const sourceLink = document.getElementById("source");
-                            sourceLink.href = planet.overview.source;
+                            sourceLink.href = planetData.overview.source;
 
-                            const rotationValue = parseFloat(planet.rotation); 
-                            const revolutionValue = parseFloat(planet.revolution); 
-                            const radiusValue = parseFloat(planet.radius.replace(/,/g, '')); 
-                            const temperatureValue = parseFloat(planet.temperature.replace('°C', '')); 
+                            const rotationValue = parseFloat(planetData.rotation); 
+                            const revolutionValue = parseFloat(planetData.revolution); 
+                            const radiusValue = parseFloat(planetData.radius.replace(/,/g, '')); 
+                            const temperatureValue = parseFloat(planetData.temperature.replace('°C', '')); 
 
                             animateValue("rotation", parseFloat(document.getElementById("rotation").textContent), rotationValue, 1000, "Hours");
                             animateValue("revolution", parseFloat(document.getElementById("revolution").textContent), revolutionValue, 1000, "Years");
@@ -54,7 +71,6 @@ function updateSelectedPlanet() {
                         }
                     });
 
-               
                 mainElement.classList.remove('animate-in'); 
                 mainElement.classList.add('animate-in-active'); 
 
@@ -67,10 +83,13 @@ function updateSelectedPlanet() {
 }
 updateSelectedPlanet();
 
+
+
+
 function animateValue(id, start, end, duration, unit) {
     const element = document.getElementById(id);
     const range = end - start;
-    const minTimer = 50; // intervalo mínimo de atualização
+    const minTimer = 50; 
     let startTime = null;
 
     function step(currentTime) {
@@ -78,13 +97,12 @@ function animateValue(id, start, end, duration, unit) {
         const progress = Math.min((currentTime - startTime) / duration, 1);
         const currentValue = Math.floor(progress * range + start);
 
-        // Atualiza o valor do elemento com o valor atual
         element.textContent = `${currentValue} ${unit}`;
 
         if (progress < 1) {
-            requestAnimationFrame(step); // Continua animando até completar
+            requestAnimationFrame(step); 
         } else {
-            element.textContent = `${end} ${unit}`; // Garante que o valor final seja correto
+            element.textContent = `${end} ${unit}`; 
         }
     }
 
