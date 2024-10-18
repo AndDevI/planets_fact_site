@@ -54,33 +54,4 @@ function updateSelectedPlanet() {
         });
     });
 }
-
-
-
 updateSelectedPlanet();
-
-
-const buttonInformation = document.querySelectorAll('.button-information');
-window.onload = () => {
-    buttonInformation.forEach(btn => {
-        if (btn.id === 'activeFirst') btn.classList.add(`bg-${colorPlanet}/50`);
-    });
-};
-
-buttonInformation.forEach(button => {
-    button.addEventListener('click', () => {
-        const dynamicClass = `bg-${colorPlanet}/50`;
-
-        buttonInformation.forEach(btn => {
-            btn.classList.remove('active');
-            btn.classList.remove(dynamicClass); 
-        });
-
-        button.classList.add('active', dynamicClass);
-    });
-});
-
-
-
-
-

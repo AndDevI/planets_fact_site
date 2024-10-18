@@ -44,6 +44,9 @@
                 .button-planets {
                     @apply text-white text-sm font-bold font-spartan uppercase opacity-0 transition-opacity duration-300;
                 }
+                .img-planet {
+                    @apply place-self-center md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1 lg:ml-40;
+                }
             }
         </style>
 </head>
@@ -118,17 +121,17 @@
             <section class="md:col-start-2 md:row-start-2 md:flex md:flex-col md:justify-center md:px-6 lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-3 lg:max-w-96 lg:ml-40">
                 <nav aria-label="Planet navigation" class="border-b border-b-white/30 md:border-0">
                     <ul class="flex justify-around text-white/50 py-5 font-spartan text-sm md:flex-col md:space-y-6 md:font-bold md:text-white md:justify-start">
-                        <li><button id="activeFirst" class="button-information md:hover:bg-white/30">OVERVIEW</button></li>
-                        <li><button class="button-information md:hover:bg-white/30">STRUCTURE</button></li>
-                        <li><button class="button-information md:hover:bg-white/30">SURFACE</button></li>
+                        <li><button id="activeFirst" class="button-information md:hover:bg-white/30" value="overview">OVERVIEW</button></li>
+                        <li><button class="button-information md:hover:bg-white/30" value="structure">STRUCTURE</button></li>
+                        <li><button class="button-information md:hover:bg-white/30" value="surface">SURFACE</button></li>
                     </ul>
                 </nav>
             </section>
 
             <!-- Planet Image -->
-            <section class="place-self-center md:col-span-2 md:col-start-1 md:row-start-1 lg:col-span-2 lg:row-span-4 lg:col-start-1 lg:row-start-1 lg:ml-40">
-                <img id="image" src="assets/images/planet-mercury.svg" alt="Illustration of planet Mercury"
-                    class="h-auto w-28 md:w-48 lg:w-72">
+            <section class="img-planet ">
+                <img id="image" src="assets/images/planet-mercury.svg" alt="Illustration of planet Mercury" class="h-auto w-28 md:w-48 lg:w-72">
+                <img id="image-geo" src="assets/images/geology-mercury.png" alt="" class="-mt-10 h-24 ml-5 md:h-24 md:ml-14 lg:h-36 lg:ml-20 hidden">
             </section>
 
             <!-- Planet Information -->
@@ -176,8 +179,8 @@
     <!-- Scripts -->
     <script src="scripts/menuAnimation.js"></script>
     <script src="scripts/createStars.js"></script>
-    <script src="scripts/colorPlanets.js"></script>
-    <script src="scripts/planetInformation.js" defer></script>
+    <script src="scripts/planets.js"></script>
+    <script src="scripts/infoPlanets.js"></script>
     
 </body>
 
