@@ -14,6 +14,7 @@ function createPlanetsMenu() {
             ];
 
             const ulMobile = document.querySelector('#ul_mobile');
+            ulMobile.innerHTML = ''; 
 
             datas.forEach((data, index) => {
                 const line = document.createElement('div');
@@ -26,6 +27,10 @@ function createPlanetsMenu() {
                 buttonPlanets.value = data.name;
                 buttonPlanets.classList.add('flex', 'items-center', 'w-full', 'select');
                 buttonPlanets.setAttribute('aria-label', `${data.name} page`);
+
+                buttonPlanets.addEventListener('click', () => {
+                    closeMenu(); 
+                });
 
                 const innerDiv = document.createElement('div');
                 innerDiv.classList.add('flex', 'items-center', 'gap-6');
@@ -49,7 +54,6 @@ function createPlanetsMenu() {
                 buttonPlanets.appendChild(chevronIcon);
 
                 li.appendChild(buttonPlanets);
-
                 ulMobile.appendChild(li);
                 ulMobile.appendChild(line);
 
@@ -61,12 +65,41 @@ function createPlanetsMenu() {
                     line.classList.add('opacity-100');
                 }, 100 * index);
             });
-
-            // Chama a função de outro arquivo para atualizar a variável selectedPlanet
             updateSelectedPlanet();
         });
 }
 
+function closeMenu() {
+    const buttonMenu = document.querySelector('#btn_menu');
+    const menu = document.querySelector('#menu_mobile');
+    const ulMobile = document.querySelector('#ul_mobile'); 
+    const main = document.querySelector('main');
+
+    buttonMenu.classList.remove('active');
+    const lis = ulMobile.querySelectorAll('li');
+    const lines = ulMobile.querySelectorAll('div.h-px'); 
+
+    lis.forEach((li, index) => {
+        setTimeout(() => {
+            li.classList.remove('opacity-100'); 
+            li.classList.add('opacity-0'); 
+        }, 100 * index); 
+    });
+
+    lines.forEach((line, index) => {
+        setTimeout(() => {
+            line.classList.remove('opacity-100'); 
+            line.classList.add('opacity-0'); 
+        }, 100 * index); 
+    });
+
+    setTimeout(() => {
+        ulMobile.innerHTML = ''; 
+        menu.classList.replace('translate-x-0', 'translate-x-full'); 
+
+        main.classList.add('animate-in-active');
+    }, 100 * (lis.length + lines.length)); 
+}
 
 const buttonMenu = document.querySelector('#btn_menu');
 
@@ -85,34 +118,9 @@ buttonMenu.addEventListener('click', () => {
             main.classList.remove('animate-in-active');
         }, 10); 
     } else {
-        buttonMenu.classList.remove('active');
-
-        const lis = ulMobile.querySelectorAll('li');
-        const lines = ulMobile.querySelectorAll('div.h-px'); 
-
-        lis.forEach((li, index) => {
-            setTimeout(() => {
-                li.classList.remove('opacity-100'); 
-                li.classList.add('opacity-0'); 
-            }, 100 * index); 
-        });
-
-        lines.forEach((line, index) => {
-            setTimeout(() => {
-                line.classList.remove('opacity-100'); 
-                line.classList.add('opacity-0'); 
-            }, 100 * index); 
-        });
-
-        setTimeout(() => {
-            ulMobile.innerHTML = ''; 
-            menu.classList.replace('translate-x-0', 'translate-x-full'); 
-
-            main.classList.add('animate-in-active');
-        }, 100 * (lis.length + lines.length)); 
+        closeMenu(); 
     }
 });
-
 
 
 function animatePlanetButtons() {
@@ -143,8 +151,6 @@ function updateDesktopMenu() {
         });
     }
 }
-
 updateDesktopMenu();
-
 window.addEventListener('resize', updateDesktopMenu);
 
